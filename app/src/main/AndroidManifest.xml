@@ -13,12 +13,18 @@
         android:theme="@style/Theme.DailyEdu"
         tools:targetApi="31">
         <activity
+            android:name=".subjects.ChemistryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".subjects.PhysicsActivity"
+            android:exported="false" />
+        <activity
             android:name=".Test"
             android:exported="false"
             android:label="@string/title_activity_test"
             android:theme="@style/Theme.DailyEdu" />
         <activity
-            android:name=".BiologyActivity"
+            android:name=".subjects.BiologyActivity"
             android:exported="false" />
         <activity
             android:name=".MainDisplay"
