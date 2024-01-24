@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "616052971963",
+    "project_id": "dailyedu-f10e9",
+    "storage_bucket": "dailyedu-f10e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616052971963:android:bfb181ac4186702393cc9e",
+        "android_client_info": {
+          "package_name": "com.example.dailyedu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrr3BW5Z2G_gTIajT55ddRQn68Eq3ImV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
