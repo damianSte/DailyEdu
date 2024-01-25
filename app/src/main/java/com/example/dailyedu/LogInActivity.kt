@@ -1,5 +1,6 @@
 package com.example.dailyedu
 
+import AdmianApp.AdminMainDisplay
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -69,6 +70,19 @@ class LogInActivity : AppCompatActivity() {
         if (validateLoginDetails()) {
             val email = inputEmail.text.toString().trim()
             val password = inputPassword.text.toString().trim()
+            val adminEmail = "damianstepien1@interia.pl"
+
+            // Validating admin
+            if (email == adminEmail){
+                if (password == "Damian17"){
+                    goToAdminDisplay()
+                    finish()
+                    return
+                } else {
+
+                    return
+                }
+            }
 
             // getting email and password from Firebase
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
@@ -90,6 +104,10 @@ class LogInActivity : AppCompatActivity() {
         // on click to SecondActivity
         val intent = Intent(this,MainDisplay::class.java)
         intent.putExtra("uID",uid)
+        startActivity(intent)
+    }
+    private fun goToAdminDisplay() {
+        val intent = Intent(this, AdminMainDisplay::class.java)
         startActivity(intent)
     }
 }
