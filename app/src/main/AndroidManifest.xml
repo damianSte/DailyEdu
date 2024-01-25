@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,16 +21,23 @@
         android:theme="@style/Theme.DailyEdu"
         tools:targetApi="31">
         <activity
+            android:name="AdmianApp.AdminMainDisplay"
+            android:exported="false" />
+        <activity
+            android:name="AdmianApp.AdminBiologyActivity"
+            android:exported="false" />
+        <activity
+            android:name="AdmianApp.AdminChemistryActivity"
+            android:exported="false" />
+        <activity
+            android:name="AdmianApp.AdminPhysicsActivity"
+            android:exported="false" />
+        <activity
             android:name=".subjects.ChemistryActivity"
             android:exported="false" />
         <activity
             android:name=".subjects.PhysicsActivity"
             android:exported="false" />
-        <activity
-            android:name=".Test"
-            android:exported="false"
-            android:label="@string/title_activity_test"
-            android:theme="@style/Theme.DailyEdu" />
         <activity
             android:name=".subjects.BiologyActivity"
             android:exported="false" />
