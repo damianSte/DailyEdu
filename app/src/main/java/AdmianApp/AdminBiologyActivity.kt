@@ -2,12 +2,15 @@ package AdmianApp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toolbar
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dailyedu.R
+import androidx.appcompat.widget.Toolbar
+
 
 class AdminBiologyActivity : AppCompatActivity() {
 
@@ -43,7 +46,22 @@ class AdminBiologyActivity : AppCompatActivity() {
                 onBackPressed()
                 return true
             }
+            R.id.menu_save -> {
+                saveImageAndText()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    private fun saveImageAndText() {
+       //TODO(add Firebase to transfer imiges there)//
+        Toast.makeText(this, "Image and text saved successfully", Toast.LENGTH_SHORT).show()
+    }
+
 }
