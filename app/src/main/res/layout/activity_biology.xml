@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".subjects.BiologyActivity">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="413dp"
@@ -22,15 +21,54 @@
         app:layout_constraintVertical_bias="0.0"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleView"
-        android:layout_width="364dp"
-        android:layout_height="325dp"
+    <ImageView
+        android:id="@+id/imageViewDownload"
+        android:layout_width="346dp"
+        android:layout_height="402dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.012"
+        tools:srcCompat="@tools:sample/avatars" />
 
+    <ScrollView
+        android:layout_width="389dp"
+        android:layout_height="310dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDownload">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- TextView to display non-editable multiline text -->
+            <TextView
+                android:id="@+id/textViewBiologyContent"
+                android:layout_width="match_parent"
+                android:layout_height="311dp"
+                android:inputType="none"
+                android:padding="16dp"
+                android:text="Your multiline text goes here..."
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/recycleView"-->
+    <!--        android:layout_width="364dp"-->
+    <!--        android:layout_height="325dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.495"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+    <!--        app:layout_constraintVertical_bias="0.116" />-->
+

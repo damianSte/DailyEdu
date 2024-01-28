@@ -1,19 +1,20 @@
 package com.example.dailyedu.subjects
 
-import Adapters.Adapter
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.dailyedu.R
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyedu.firestore.dataSubjects
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.Query
+import com.squareup.picasso.Picasso
 
 class BiologyActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
-    private lateinit var adapter: Adapter
     private lateinit var firestoreListener: ListenerRegistration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,32 +27,43 @@ class BiologyActivity : AppCompatActivity() {
         // Initialize Firestore
         firestore = FirebaseFirestore.getInstance()
 
-        // Initialize RecyclerView and adapter
-        val recyclerView: RecyclerView = findViewById(R.id.recycleView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = Adapter()
-        recyclerView.adapter = adapter
+        // Initialize ImageView
+        val imageView: ImageView = findViewById(R.id.imageViewDownload)
+        val textView : TextView = findViewById(R.id.textViewBiologyContent)
 
         // Fetch and display data from Firestore
-        fetchDataFromFirestore()
+        fetchDataFromFirestore(imageView, textView)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
-    private fun fetchDataFromFirestore() {
+    private fun fetchDataFromFirestore(imageView: ImageView, textView: TextView) {
         firestoreListener = firestore.collection("biology_collection")
+            .orderBy("timestamp", Query.Direction.DESCENDING) // Replace "timestamp" with the actual field name in your Firestore documents
+            .limit(1) // Limit the result to only one document (the most recent one)
             .addSnapshotListener { querySnapshot, error ->
                 if (error != null) {
                     // Handle error
                     return@addSnapshotListener
                 }
 
-                val biologyItems = mutableListOf<dataSubjects>()
-                querySnapshot?.documents?.forEach { document ->
+                querySnapshot?.documents?.firstOrNull()?.let { document ->
                     val imageUrl = document.getString("image_url") ?: ""
                     val textData = document.getString("text_data") ?: ""
-                    biologyItems.add(dataSubjects(imageUrl, textData))
-                }
 
-                adapter.setData(biologyItems)
+                    // Load image into ImageView using Picasso or any other image loading library
+                    Picasso.get().load(imageUrl).into(imageView)
+
+                    // Set text data to TextView
+                    textView.text = textData
+                }
             }
     }
 

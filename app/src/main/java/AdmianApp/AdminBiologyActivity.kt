@@ -1,6 +1,5 @@
 package AdmianApp
 
-import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -8,13 +7,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dailyedu.R
-import androidx.appcompat.widget.Toolbar
 import androidx.core.graphics.drawable.toBitmap
-import com.example.dailyedu.subjects.BiologyActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -28,7 +25,7 @@ class AdminBiologyActivity : AppCompatActivity() {
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private val storage: FirebaseStorage = FirebaseStorage.getInstance()
 
-
+    private lateinit var editableText: EditText
     private lateinit var editableImageView: ImageView
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         // Handle the selected image URI here
@@ -42,6 +39,7 @@ class AdminBiologyActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         editableImageView = findViewById(R.id.editableImageView)
+        editableText = findViewById(R.id.editTextBiology)
 
         // Set up the button to trigger image selection
         val selectImageButton: Button = findViewById(R.id.selectImageButton)
@@ -80,6 +78,7 @@ class AdminBiologyActivity : AppCompatActivity() {
 
         // Generate a unique name for the image file in Firebase Storage
         val imageName = "biology_image_${System.currentTimeMillis()}.jpg"
+        val text = editableText.text.toString()
 
         // Get a reference to the Firebase Storage location
         val storageReference =
@@ -89,7 +88,7 @@ class AdminBiologyActivity : AppCompatActivity() {
         storageReference.putFile(imageUri!!)
             .addOnSuccessListener { taskSnapshot ->
                 storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
-                    saveDataToFirestore(downloadUri.toString(), "YourTextDataHere")
+                    saveDataToFirestore(downloadUri.toString(), text)
                 }
             }
             .addOnFailureListener { exception ->
@@ -103,10 +102,11 @@ class AdminBiologyActivity : AppCompatActivity() {
         // Get a reference to the Firestore collection where you want to store the data
         val firestoreReference = FirebaseFirestore.getInstance().collection("biology_collection")
 
-        // Create a data object with the image URL and text data
+        // Create a data object with the image URL, text data, and timestamp
         val data = hashMapOf(
             "image_url" to imageUrl,
-            "text_data" to textData
+            "text_data" to textData,
+            "timestamp" to System.currentTimeMillis() // Add timestamp field
         )
 
         // Add the data to Firestore
@@ -120,13 +120,16 @@ class AdminBiologyActivity : AppCompatActivity() {
                     if (snapshot != null && snapshot.exists()) {
                         val imageUrlFromFirestore = snapshot.getString("image_url")
                         val textDataFromFirestore = snapshot.getString("text_data")
+                        val timestampFromFirestore = snapshot.getLong("timestamp")
 
+                        // Now you have access to the timestamp in milliseconds
                     }
                 }
             }
             .addOnFailureListener { exception ->
-
+                // Handle failures
             }
+
     }
     private fun bitmapToUri(bitmap: Bitmap): Uri {
         // Convert Bitmap to Uri without saving to a file
