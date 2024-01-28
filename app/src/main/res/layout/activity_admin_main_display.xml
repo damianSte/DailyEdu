@@ -32,7 +32,7 @@
                 android:layout_marginTop="40dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
-                app:srcCompat="@drawable/adminbio" />
+                app:srcCompat="@drawable/biology" />
 
             <ImageButton
                 android:id="@+id/ImageBtnPhysics"
@@ -41,7 +41,7 @@
                 android:layout_marginTop="40dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
-                app:srcCompat="@drawable/adphysics" />
+                app:srcCompat="@drawable/physics" />
 
             <ImageButton
                 android:id="@+id/ImageBtnChemistry"
@@ -50,7 +50,7 @@
                 android:layout_marginTop="40dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
-                app:srcCompat="@drawable/chemad" />
+                app:srcCompat="@drawable/chemistry" />
 
 
         </LinearLayout>
