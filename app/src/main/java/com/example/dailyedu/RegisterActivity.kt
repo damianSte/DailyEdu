@@ -85,9 +85,9 @@ class RegisterActivity : ErrorSnackBar() {
             val name: String = registerName.text.toString().trim(' ')
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(login, password)
                 .addOnCompleteListener(
-                   OnCompleteListener<AuthResult> { task ->
+                    OnCompleteListener<AuthResult> { task ->
                         if (task.isSuccessful) {
-                           val firebaseUser: FirebaseUser = task.result!!.user!!
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
                             showErrorSnackBar(
                                 "You are registered successfully. Your user id is ${firebaseUser.uid}",
                                 false
@@ -100,7 +100,7 @@ class RegisterActivity : ErrorSnackBar() {
                                 login,
                             )
                             FireStoreClass().registerUserFS(this@RegisterActivity, user)
-                            FirebaseAuth.getInstance().signOut()
+                            // FirebaseAuth.getInstance().signOut() // Remove this line
                             finish()
                         } else {
                             showErrorSnackBar(task.exception!!.message.toString(), true)

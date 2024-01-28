@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.dailyedu" />
-                  <option name="mobileSdkAppId" value="1:616052971963:android:bfb181ac4186702393cc9e" />
-                  <option name="projectId" value="dailyedu-f10e9" />
-                  <option name="projectNumber" value="616052971963" />
+                  <option name="mobileSdkAppId" value="1:221483404608:android:ffbe2d96f351eb88a6fea5" />
+                  <option name="projectId" value="dailyedunew" />
+                  <option name="projectNumber" value="221483404608" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

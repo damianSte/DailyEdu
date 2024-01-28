@@ -7,7 +7,7 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -20,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyEdu"
         tools:targetApi="31">
+        <activity
+            android:name="Adapters.Adapter"
+            android:exported="false" />
+        <activity
+            android:name=".firestore.dataSubjects"
+            android:exported="false" />
         <activity
             android:name="AdmianApp.AdminMainDisplay"
             android:exported="false" />
