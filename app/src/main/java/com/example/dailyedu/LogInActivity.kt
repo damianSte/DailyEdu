@@ -35,14 +35,6 @@ class LogInActivity : AppCompatActivity() {
             logInRegisteredUser()
         }
 
-        skipBtn = findViewById(R.id.SkipLogIn)
-
-        skipBtn.setOnClickListener {
-            val intent = Intent(this, MainDisplay::class.java)
-            startActivity(intent)
-        }
-
-
     }
 
     private fun validateLoginDetails(): Boolean {

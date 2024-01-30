@@ -12,6 +12,7 @@ import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dailyedu.R
 import androidx.core.graphics.drawable.toBitmap
+import com.example.dailyedu.firestore.ErrorSnackBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -19,7 +20,7 @@ import java.io.File
 import java.io.FileOutputStream
 
 
-class AdminBiologyActivity : AppCompatActivity() {
+class AdminBiologyActivity : ErrorSnackBar() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -89,11 +90,11 @@ class AdminBiologyActivity : AppCompatActivity() {
             .addOnSuccessListener { taskSnapshot ->
                 storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
                     saveDataToFirestore(downloadUri.toString(), text)
+                    showErrorSnackBar("Image successfully added to Storage", errorMessage = true)
                 }
             }
             .addOnFailureListener { exception ->
-                // Handle any errors during the image upload
-                // You may want to show an error message to the user
+                showErrorSnackBar("Image was not uploaded to Storage", errorMessage = true)
             }
     }
 
@@ -106,7 +107,7 @@ class AdminBiologyActivity : AppCompatActivity() {
         val data = hashMapOf(
             "image_url" to imageUrl,
             "text_data" to textData,
-            "timestamp" to System.currentTimeMillis() // Add timestamp field
+            "timestamp" to System.currentTimeMillis()
         )
 
         // Add the data to Firestore

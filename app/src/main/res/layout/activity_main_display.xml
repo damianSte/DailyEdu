@@ -4,20 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#333333"
     tools:context=".MainDisplay">
 
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="209dp"
+        android:layout_height="149dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024"
+        app:srcCompat="@drawable/science" />
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="414dp"
         android:layout_height="540dp"
-        android:background="@android:color/white"
+
+        android:layout_marginTop="175dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,32 +40,52 @@
 
             <ImageButton
                 android:id="@+id/ImageBtnBiology"
-                android:layout_width="383dp"
-                android:layout_height="wrap_content"
+                android:layout_width="387dp"
+                android:layout_height="231dp"
                 android:layout_marginTop="40dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
-                app:srcCompat="@drawable/biology" />
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/frog" />
 
             <ImageButton
                 android:id="@+id/ImageBtnPhysics"
                 android:layout_width="379dp"
-                android:layout_height="wrap_content"
+                android:layout_height="231dp"
                 android:layout_marginTop="40dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
-                app:srcCompat="@drawable/physics" />
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/einstein" />
 
             <ImageButton
                 android:id="@+id/ImageBtnChemistry"
                 android:layout_width="379dp"
-                android:layout_height="wrap_content"
+                android:layout_height="231dp"
                 android:layout_marginTop="40dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
-                app:srcCompat="@drawable/chemistry" />
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/flask" />
 
 
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Choose Subject"
+        android:textColor="#FAF7FF"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.183" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
