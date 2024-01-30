@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#333333"
     tools:context=".MainDisplay">
-
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="414dp"
         android:layout_height="540dp"
-        android:background="@android:color/white"
+        android:background="#333333"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
@@ -51,7 +51,6 @@
                 android:adjustViewBounds="true"
                 android:background="@null"
                 app:srcCompat="@drawable/chemistry" />
-
 
         </LinearLayout>
     </ScrollView>

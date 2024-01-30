@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="413dp"
         android:layout_height="47dp"
-        android:background="?attr/colorPrimary"
+        android:background="#8685EF"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintBottom_toBottomOf="parent"

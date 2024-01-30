@@ -1,0 +1,16 @@
+<!-- res/drawable/background_layer_with_text.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background color -->
+    <item android:drawable="#333333" />
+
+    <item>
+        <bitmap
+            android:gravity="bottom|end"
+            android:src="@drawable/frog"
+            android:width="50dp"
+            android:height="50dp"/>
+    </item>
+
+</layer-list>
+
