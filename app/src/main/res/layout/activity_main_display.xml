@@ -46,7 +46,7 @@
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/bioback" />
+                app:srcCompat="@drawable/frog" />
 
             <ImageButton
                 android:id="@+id/ImageBtnPhysics"
@@ -56,17 +56,17 @@
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/phyback" />
+                app:srcCompat="@drawable/einstein" />
 
             <ImageButton
                 android:id="@+id/ImageBtnChemistry"
                 android:layout_width="379dp"
-                android:layout_height="231"
+                android:layout_height="231dp"
                 android:layout_marginTop="40dp"
                 android:adjustViewBounds="true"
                 android:background="@null"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/chemback" />
+                app:srcCompat="@drawable/flask" />
 
 
         </LinearLayout>
