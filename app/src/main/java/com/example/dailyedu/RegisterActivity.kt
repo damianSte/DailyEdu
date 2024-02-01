@@ -1,9 +1,11 @@
 package com.example.dailyedu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -21,7 +23,7 @@ class RegisterActivity : ErrorSnackBar() {
     private lateinit var registerPassword: EditText
     private lateinit var registerRepeatPassword: EditText
     private lateinit var registerName: EditText
-
+    private lateinit var goBackInToLogIn: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -32,14 +34,30 @@ class RegisterActivity : ErrorSnackBar() {
         registerName = findViewById<EditText>(R.id.editTextRegisterName)
 
         val registerButton = findViewById<Button>(R.id.buttonRegister)
+        goBackInToLogIn = findViewById(R.id.buttonGoLogIn)
 
         registerButton.isEnabled = true
+        goBackInToLogIn.isEnabled = true
 
         registerButton.setOnClickListener {
             if (registrationData()) {
                 registerUser()
+
+//                registerButton.setOnClickListener{
+//                    val int = Intent(this, MainDisplay::class.java)
+//                    startActivity(int)
+//
+//                }
             }
         }
+
+        goBackInToLogIn.setOnClickListener {
+
+            val intent = Intent(this, LogInActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
     }
 
@@ -52,18 +70,25 @@ class RegisterActivity : ErrorSnackBar() {
 
         return when {
             TextUtils.isEmpty(email) -> {
+                showErrorSnackBar("Invalid e-mail", true)
                 false
             }
-            !isValidEmail(email)->{
+            !isValidEmail(email)-> {
+                showErrorSnackBar("Invalid e-mail", true)
                 false
             }
             TextUtils.isEmpty(password) -> {
+                showErrorSnackBar(" Password must contain at least one Cpital letter", true)
                 false
             }
             TextUtils.isEmpty(repeatPassword) -> {
+                if(repeatPassword!=password){
+                    showErrorSnackBar("Given password must be the same", true)
+                }
                 false
             }
             password != repeatPassword -> {
+                showErrorSnackBar("Given password must be the same", true)
                 false
             }
             else -> true
@@ -102,6 +127,7 @@ class RegisterActivity : ErrorSnackBar() {
                             FireStoreClass().registerUserFS(this@RegisterActivity, user)
                             // FirebaseAuth.getInstance().signOut() // Remove this line
                             finish()
+
                         } else {
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
