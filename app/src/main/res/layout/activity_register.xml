@@ -4,21 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4D6A7"
+    android:background="#333333"
     tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/textViewRegisterTEXT"
-        android:layout_width="292dp"
-        android:layout_height="61dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
         android:text="REGISTER"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#FAF7FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.14" />
+
 
     <EditText
         android:id="@+id/editTextRegisterPasswordReapet"
@@ -30,10 +33,9 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRegisterPassword"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <EditText
         android:id="@+id/editTextRegisterPassword"
@@ -45,11 +47,9 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRegisterEmail"
-        app:layout_constraintVertical_bias="0.07" />
-
+        app:layout_constraintVertical_bias="0.071" />
 
     <EditText
         android:id="@+id/editTextRegisterEmail"
@@ -62,10 +62,23 @@
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRegisterName"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.173" />
+
+    <EditText
+        android:id="@+id/editTextRegisterName"
+        android:layout_width="281dp"
+        android:layout_height="45dp"
+        android:background="@drawable/round_box"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTEXT"
+        app:layout_constraintVertical_bias="0.1" />
 
     <Button
         android:id="@+id/buttonRegister"
@@ -75,25 +88,23 @@
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRegisterPasswordReapet"
-        app:layout_constraintVertical_bias="0.247" />
+        app:layout_constraintVertical_bias="0.168" />
 
-    <EditText
-        android:id="@+id/editTextRegisterName"
-        android:layout_width="281dp"
-        android:layout_height="45dp"
-        android:hint="Name"
-        android:background="@drawable/round_box"
-        android:ems="10"
-        android:inputType="text"
+    <Button
+        android:id="@+id/buttonGoLogIn"
+        android:layout_width="218dp"
+        android:layout_height="55dp"
+        android:backgroundTint="#9B2915"
+        android:text="Back To Log In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTEXT"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
+        app:layout_constraintVertical_bias="0.147" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

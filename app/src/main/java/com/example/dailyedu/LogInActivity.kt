@@ -8,9 +8,10 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.example.dailyedu.firestore.ErrorSnackBar
 import com.google.firebase.auth.FirebaseAuth
 
-class LogInActivity : AppCompatActivity() {
+class LogInActivity : ErrorSnackBar() {
 
     private lateinit var inputEmail: EditText
     private lateinit var inputPassword: EditText
@@ -44,15 +45,15 @@ class LogInActivity : AppCompatActivity() {
 
         return when {
             TextUtils.isEmpty(email) -> {
-                //showErrorSnackBar("User not found", true)
+                showErrorSnackBar("User not found", true)
                 false
             }
             TextUtils.isEmpty(password) -> {
-               // showErrorSnackBar("Invalid Password or Email", true)
+                showErrorSnackBar("Invalid Password or Email", true)
                 false
             }
             else -> {
-               // showErrorSnackBar("Your details are valid", false)
+                showErrorSnackBar("Your details are valid", false)
                 true
             }
         }
@@ -80,11 +81,11 @@ class LogInActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        //showErrorSnackBar("You are logged in successfully.", false)
+                        showErrorSnackBar("You are logged in successfully.", false)
                         goToMainDisplay()
                         finish()
                     } else {
-                       // showErrorSnackBar(task.exception?.message.toString(), true)
+                        showErrorSnackBar(task.exception?.message.toString(), true)
                     }
                 }
         }
